@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>borg-mysql-backup</Name>
+  <Repository>layr/borg-mysql-backup:borg1</Repository>
+  <Registry>https://hub.docker.com/r/layr/borg-mysql-backup</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview/>
+  <Category>Backup: Cloud:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1605562439</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description/>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish/>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/backup</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/etc/localtime</ContainerDir>
+      <Mode>ro</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/root/.cache/borg</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/root/.config/borg</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/var/log</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>ro</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value/>
+      <Name>HOST_ID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>BORG_PASSPHRASE</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>PRUNE_OPTS</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>CREATE_OPTS</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>BORG_REMOTE_PATH</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>COMMON_OPTS</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="ID for this host; used in borg archive names" Target="HOST_ID" Default="unraid" Mode="" Description="Container Variable: HOST_ID" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="passphrase for your borg repos (both remote &amp;amp; local)" Target="BORG_PASSPHRASE" Default="" Mode="" Description="Container Variable: BORG_PASSPHRASE" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="borg repo prune options" Target="PRUNE_OPTS" Default="--keep-daily=7 --keep-weekly=4 --keep-monthly=3 --keep-within=3d" Mode="" Description="Container Variable: PRUNE_OPTS" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="path to your local borg repo" Target="/backup" Default="" Mode="rw" Description="Container Path: /backup" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="borg create command options" Target="CREATE_OPTS" Default="--compression zlib,5" Mode="" Description="Container Variable: CREATE_OPTS" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="see borg docs; use 'borg1' if backing up to rsync.net" Target="BORG_REMOTE_PATH" Default="borg1" Mode="" Description="Container Variable: BORG_REMOTE_PATH" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="for syncing up local &amp;amp; container times" Target="/etc/localtime" Default="/etc/localtime" Mode="ro" Description="Container Path: /etc/localtime" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="borg cache; see borg docs for additional info" Target="/root/.cache/borg" Default="/mnt/user/appdata/borg-mysql-backup/.borg/cache" Mode="rw" Description="Container Path: /root/.cache/borg" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="borg config; see borg docs for additional info" Target="/root/.config/borg" Default="/mnt/user/appdata/borg-mysql-backup/.borg/config" Mode="rw" Description="Container Path: /root/.config/borg" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="scripts' logs" Target="/var/log" Default="/mnt/user/appdata/borg-mysql-backup/logs" Mode="rw" Description="Container Path: /var/log" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="common opts for all borg commands" Target="COMMON_OPTS" Default="--lock-wait 18000" Mode="" Description="Container Variable: COMMON_OPTS" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AppData Config Path" Target="/config" Default="/mnt/user/appdata/borg-mysql-backup" Mode="ro" Description="Container Path: /config" Type="Path" Display="advanced-hide" Required="true" Mask="false"/>
+</Container>
